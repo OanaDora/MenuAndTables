@@ -13,5 +13,3 @@ WebContent/menuAndTablesDemo/*
 WebContent/login/*
 WebContent/WEB-INF/deploy/*
 WebContent/WEB-INF/classes/*
-*.project
-*.settings/*
