@@ -10,6 +10,11 @@ import com.demo.client.service.OrderService;
 import com.demo.client.service.OrderServiceAsync;
 import com.demo.client.service.SessionManagementService;
 import com.demo.client.service.SessionManagementServiceAsync;
+import com.demo.client.widgets.CalendarPicker;
+import com.demo.client.widgets.CommonCellTable;
+import com.demo.client.widgets.DropDownList;
+import com.demo.client.widgets.EditableColumn;
+import com.demo.client.widgets.TabMenuBar;
 import com.demo.shared.Constants;
 import com.demo.shared.Notification;
 import com.demo.shared.SessionState;
@@ -25,6 +30,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.TabPanel;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.view.client.ListDataProvider;
 
 public class MenuAndTables implements EntryPoint {
@@ -152,7 +158,9 @@ public class MenuAndTables implements EntryPoint {
 	}
 	
 	private void constructOrdersPage(FlowPanel orderPanel){
-		final Grid grid = new Grid(7,3);
+		final Grid grid = new Grid(7,4);
+		grid.setStyleName("tabel-center");
+		
 		grid.setText(0, 0, "Order type:");
 		
 		//get order types and put them in a drop down list
@@ -167,9 +175,22 @@ public class MenuAndTables implements EntryPoint {
 			public void onSuccess(List<String> result) {
 				DropDownList orderType = new DropDownList();
 				orderType.addToList(result);
-				grid.add(orderType);				
+				grid.setWidget(0, 1, orderType);				
 			}
 		});
+		
+		grid.setText(0, 2, "Order number:");
+		grid.setText(0, 3, "aaaaaa444444444");
+		grid.setText(1, 0, "Link to order: ");
+		DropDownList orderType = new DropDownList();
+		orderType.addToList(null);
+		grid.setWidget(1, 2, orderType);
+		grid.setText(2, 0, "Request date:");
+
+		TextBox requestDate = new TextBox();
+		grid.setWidget(2, 2, requestDate);
+		CalendarPicker picker = new CalendarPicker(requestDate);
+		grid.setWidget(2, 2, picker);
 		
 		orderPanel.add(grid);
 	}

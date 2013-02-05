@@ -1,4 +1,4 @@
-package com.demo.client;
+package com.demo.client.widgets;
 
 import java.util.Comparator;
 import java.util.List;
