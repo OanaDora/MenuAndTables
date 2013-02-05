@@ -1,0 +1,62 @@
+<project name="test" basedir="." default="default">
+<property name="src.dir" value="src" />
+<property name="build.dir" value="WebContent" />
+<path id="compile.classpath">
+    <fileset dir="${build.dir}/WEB-INF/lib">
+        <include name="**/*.jar" />
+        <include name="**/*.xml" />
+    </fileset>
+</path>
+
+<target name="default" depends="compile-server, gwtc, buildwar, deploy">
+</target>
+
+<target name="compile-server" description="Compiles VIE wrapper server-side classes">
+	
+	<javac srcdir="${src.dir}" destdir="WebContent/WEB-INF/classes" debug="on" optimize="on" deprecation="on" source="1.7" 
+		target="${java.target.version}">
+
+	<classpath>
+	<fileset dir="WebContent/WEB-INF/lib">
+	<include name="**/*.jar" />
+	<exclude name="**/gwt-user*.jar" />
+	<exclude name="**/gwt-dev*.jar" />
+	</fileset>
+	</classpath>
+	</javac>
+	
+</target>
+	
+<target name="gwtc" description="GWT compile to JavaScript">
+    <java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
+        <classpath>
+            <pathelement location="${src.dir}" />
+            <path refid="compile.classpath" />
+        </classpath>
+        <arg line="-logLevel INFO" />
+        <jvmarg value="-Xmx1024M" />
+        <arg value="com.demo.MenuAndTablesDemo" />
+    	<arg value="com.demo.Login" />
+    </java>
+</target>
+
+<target name="buildwar">
+    <war basedir="war" destfile="MenuAndTablesDemo.war" webxml="WebContent/WEB-INF/web.xml">
+        <exclude name="WEB-INF/**" />
+        <webinf dir="WebContent/WEB-INF/">
+        	<include name="classes/**" />
+        	<include name="deploy/**" />
+        	<include name="**/*.properties" />
+        	<include name="**/*.out" />
+            <include name="**/*.jar" />
+            <exclude name="**/gwt-dev.jar" />
+            <exclude name="**/gwt-user.jar" />
+        </webinf>
+    </war>
+</target>
+
+<target name="deploy">
+    <copy file="MenuAndTablesDemo.war" todir="." />
+</target>
+ 
+</project>

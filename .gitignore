@@ -1,0 +1,17 @@
+*.class*
+*.dll
+*.exe
+*.o
+*.so
+*.metadata*
+gwt-unitCache*
+*.war
+*.jar
+*.cache.*
+*.gwt/*
+WebContent/menuAndTablesDemo/*
+WebContent/login/*
+WebContent/WEB-INF/deploy/*
+WebContent/WEB-INF/classes/*
+*.project
+*.settings/*

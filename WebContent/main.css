@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+
+.gwt-TabPanel{
+	width: 100%;
+}
+
+/*.gwt-TabBar .gwt-TabBarItem-selected {
+	
+}*/
+
+.tabel-center{
+	width: 100%;
+	text-align:center;
+}
+
+/* login page */
+main{
+	padding: 10px;
+	text-align:left;
+}
+legend{
+	background-color: blue;
+	color: white;
+	padding: 2px;
+}
+fieldset{
+	border: blue solid 1px;
+	width:30%;
+}
