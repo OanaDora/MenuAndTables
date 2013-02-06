@@ -41,7 +41,7 @@ public class MySqlConnection {
                  String db           = "test1";
                  String driver       = "com.mysql.jdbc.Driver";
                  String user         = "root";
-                 String pass         = "And@1234";
+                 String pass         = "root";
                  
                  try {
                    

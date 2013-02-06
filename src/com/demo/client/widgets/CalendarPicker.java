@@ -45,7 +45,7 @@ public class CalendarPicker extends DatePicker {
         CalendarView view = new DefaultCalendarView();
         CalendarModel model = new CalendarModel();
         
-        this.s
+        
 	}
 
 }
